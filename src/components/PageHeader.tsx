@@ -12,9 +12,9 @@ function PageHeader({
       <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]">
         {eyebrow}
       </p>
-      <h2 className="mt-2 text-xl font-medium sm:text-2xl">{title}</h2>
+      <h2 className="mt-2 text-lg font-medium leading-tight sm:text-2xl">{title}</h2>
       {description ? (
-        <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--text-secondary)]">
+        <p className="mt-2 max-w-3xl text-sm leading-5 text-[var(--text-secondary)] sm:leading-6">
           {description}
         </p>
       ) : null}

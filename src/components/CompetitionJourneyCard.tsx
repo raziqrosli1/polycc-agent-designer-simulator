@@ -20,8 +20,8 @@ function CompetitionJourneyCard({
   }
 }) {
   return (
-    <div className="min-w-0 rounded-[var(--radius-card)] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--shadow-card)] sm:p-5">
-      <h3 className="text-xl font-medium">{title}</h3>
+    <div className="min-w-0 rounded-[var(--radius-card)] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--shadow-card)] sm:p-6">
+      <h3 className="text-lg font-medium sm:text-xl">{title}</h3>
       <p className="mt-2 text-sm text-[var(--text-secondary)]">{description}</p>
 
       <div className="mt-4 rounded-2xl border border-[color:rgba(91,123,245,0.2)] bg-[color:rgba(91,123,245,0.08)] p-4">

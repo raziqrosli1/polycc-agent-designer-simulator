@@ -6,8 +6,8 @@ function AcademyGuideCard({
   overview: AcademyGuideOverview
 }) {
   return (
-    <div className="min-w-0 rounded-[var(--radius-card)] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--shadow-card)] sm:p-5">
-      <h3 className="text-xl font-medium">{overview.title}</h3>
+    <div className="min-w-0 rounded-[var(--radius-card)] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--shadow-card)] sm:p-6">
+      <h3 className="text-lg font-medium sm:text-xl">{overview.title}</h3>
       <p className="mt-2 text-sm text-[var(--text-secondary)]">{overview.description}</p>
       <div className="mt-4 space-y-4">
         {overview.sections.map((section) => (

@@ -153,14 +153,14 @@ function DashboardPage() {
           },
         ]}
       />
-      <div className="mb-6 grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
+      <div className="space-y-4 sm:space-y-6">
         <SectionCard>
           <PageHeader
             eyebrow={t(language, 'firstTimeBannerTitle')}
             title={t(language, 'tutorialBanner')}
             description={t(language, 'firstTimeBannerDescription')}
           />
-          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
             <Button variant="primary" onClick={() => setTutorialOpen(true)}>
               {t(language, 'tutorialOpen')}
             </Button>
@@ -171,31 +171,153 @@ function DashboardPage() {
               {t(language, 'beginnerMode')}: {beginnerMode ? 'ON' : 'OFF'}
             </Button>
           </div>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            {beginnerGuide.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[var(--radius-panel)] border border-[var(--border)] bg-[var(--surface-raised)] p-4"
-              >
-                <h3 className="text-base font-medium">{item.title}</h3>
-                <p className="mt-2 text-sm text-[var(--text-secondary)]">{item.description}</p>
-              </div>
-            ))}
-          </div>
         </SectionCard>
 
-        <HowToPlayCard
-          title={t(language, 'howToPlayTitle')}
-          description={t(language, 'howToPlayDescription')}
-          steps={howToPlaySteps}
-        />
-      </div>
+        <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+          <HowToPlayCard
+            title={t(language, 'howToPlayTitle')}
+            description={t(language, 'howToPlayDescription')}
+            steps={howToPlaySteps}
+          />
 
-      <div className="mb-6">
+          <SectionCard>
+            <PageHeader
+              eyebrow={t(language, 'beginnerMode')}
+              title={language === 'ms' ? 'Asas Yang Perlu Faham' : 'Beginner Essentials'}
+              description={
+                language === 'ms'
+                  ? 'Fahami empat idea teras ini sebelum mula mereka bentuk agent pertama anda.'
+                  : 'Understand these four core ideas before designing your first agent.'
+              }
+            />
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              {beginnerGuide.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-[var(--radius-panel)] border border-[var(--border)] bg-[var(--surface-raised)] p-4"
+                >
+                  <h3 className="text-sm font-medium sm:text-base">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-5 text-[var(--text-secondary)]">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </SectionCard>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+          <div className="space-y-4 sm:space-y-6">
+            <SectionCard>
+              <PageHeader
+                eyebrow={t(language, 'resume')}
+                title={
+                  activeDraft && activeScenario
+                    ? activeScenario.title
+                    : t(language, 'noActiveDraft')
+                }
+                description={
+                  activeDraft && activeScenario
+                    ? `${activeScenario.domain} · Level ${activeScenario.difficulty} — ${activeScenario.difficultyLabel} · Seed ${activeScenario.seed}`
+                    : t(language, 'resumeDescription')
+                }
+              />
+              <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <Link
+                  to={activeDraft && activeScenario ? ROUTES.workspace : ROUTES.generator}
+                  className="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--accent)] px-4 py-2 text-center text-sm font-medium text-white transition hover:opacity-90"
+                >
+                  {activeDraft && activeScenario
+                    ? t(language, 'continueDraft')
+                    : t(language, 'generateScenario')}
+                </Link>
+              </div>
+            </SectionCard>
+
+            <SectionCard>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]">
+                    {t(language, 'recentScores')}
+                  </p>
+                  <h2 className="mt-2 text-xl font-medium">{t(language, 'latestAttempts')}</h2>
+                </div>
+                <Link to={ROUTES.history} className="text-sm text-[var(--accent)]">
+                  {t(language, 'openHistory')}
+                </Link>
+              </div>
+
+              <div className="mt-4 space-y-3">
+                {attempts.slice(0, 5).map((attempt) => (
+                  <div
+                    key={attempt.id}
+                    className="rounded-[var(--radius-panel)] border border-[var(--border)] bg-[var(--surface-raised)] p-4"
+                  >
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="min-w-0">
+                        <p className="font-medium">{attempt.scenario.title}</p>
+                        <p className="text-sm text-[var(--text-secondary)]">
+                          {attempt.scenario.domain} · Level {attempt.scenario.difficulty} —{' '}
+                          {attempt.scenario.difficultyLabel} · {attempt.scenario.seed}
+                        </p>
+                      </div>
+                      <div className="sm:text-right">
+                        <p className="text-2xl font-medium">{attempt.evaluation.scores.total}</p>
+                        <p className="text-xs uppercase tracking-[0.18em] text-[var(--text-muted)]">
+                          Total
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                {attempts.length === 0 ? (
+                  <EmptyState
+                    title={t(language, 'noAttemptsYet')}
+                    description={t(language, 'noAttemptsDescription')}
+                  />
+                ) : null}
+              </div>
+            </SectionCard>
+          </div>
+
+          <div className="space-y-4 sm:space-y-6">
+            <SectionCard>
+              <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]">
+                {t(language, 'quickStats')}
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <StatCard label={t(language, 'attempts')} value={String(attempts.length)} />
+                <StatCard label={t(language, 'average')} value={`${averageScore}`} />
+                <StatCard label={t(language, 'best')} value={`${bestScore}`} />
+                <StatCard
+                  label={t(language, 'weakestLayer')}
+                  value={weakestLayer}
+                  hint={t(language, 'historyBased')}
+                />
+                <StatCard label={t(language, 'mostPlayedDomain')} value={mostPlayedDomain} />
+              </div>
+            </SectionCard>
+
+            <SectionCard>
+              <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]">
+                {t(language, 'nextMove')}
+              </p>
+              <h2 className="mt-2 text-xl font-medium">{t(language, 'practiceWeakest')}</h2>
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">
+                {t(language, 'practiceWeakestDescription', weakestLayer)}
+              </p>
+              <Link
+                to={ROUTES.generator}
+                className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border border-[var(--border)] px-4 py-2 text-center text-sm text-[var(--text-secondary)] transition hover:border-[var(--border-strong)] hover:text-[var(--text)]"
+              >
+                {t(language, 'startNewScenario')}
+              </Link>
+            </SectionCard>
+          </div>
+        </div>
+
         <AcademyGuideCard overview={academyOverview} />
-      </div>
 
-      <div className="mb-6">
         <CompetitionJourneyCard
           title={t(language, 'journeyTitle')}
           description={t(language, 'journeyDescription')}
@@ -210,116 +332,6 @@ function DashboardPage() {
             noUnknowns: t(language, 'noUnknownInfo'),
           }}
         />
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-        <div className="space-y-6">
-          <SectionCard>
-            <PageHeader
-              eyebrow={t(language, 'resume')}
-              title={
-                activeDraft && activeScenario
-                  ? activeScenario.title
-                  : t(language, 'noActiveDraft')
-              }
-              description={
-                activeDraft && activeScenario
-                  ? `${activeScenario.domain} · Level ${activeScenario.difficulty} — ${activeScenario.difficultyLabel} · Seed ${activeScenario.seed}`
-                  : t(language, 'resumeDescription')
-              }
-            />
-            <div className="mt-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <Link
-                to={activeDraft && activeScenario ? ROUTES.workspace : ROUTES.generator}
-                className="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--accent)] px-4 py-2 text-center text-sm font-medium text-white transition hover:opacity-90"
-              >
-                {activeDraft && activeScenario
-                  ? t(language, 'continueDraft')
-                  : t(language, 'generateScenario')}
-              </Link>
-            </div>
-          </SectionCard>
-
-          <SectionCard>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]">
-                  {t(language, 'recentScores')}
-                </p>
-                <h2 className="mt-2 text-xl font-medium">{t(language, 'latestAttempts')}</h2>
-              </div>
-              <Link to={ROUTES.history} className="text-sm text-[var(--accent)]">
-                {t(language, 'openHistory')}
-              </Link>
-            </div>
-
-            <div className="mt-4 space-y-3">
-              {attempts.slice(0, 5).map((attempt) => (
-                <div
-                  key={attempt.id}
-                  className="rounded-[var(--radius-panel)] border border-[var(--border)] bg-[var(--surface-raised)] p-4"
-                >
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="min-w-0">
-                      <p className="font-medium">{attempt.scenario.title}</p>
-                      <p className="text-sm text-[var(--text-secondary)]">
-                        {attempt.scenario.domain} · Level {attempt.scenario.difficulty} —{' '}
-                        {attempt.scenario.difficultyLabel} · {attempt.scenario.seed}
-                      </p>
-                    </div>
-                    <div className="sm:text-right">
-                      <p className="text-2xl font-medium">{attempt.evaluation.scores.total}</p>
-                      <p className="text-xs uppercase tracking-[0.18em] text-[var(--text-muted)]">
-                        Total
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-              {attempts.length === 0 ? (
-                <EmptyState
-                  title={t(language, 'noAttemptsYet')}
-                  description={t(language, 'noAttemptsDescription')}
-                />
-              ) : null}
-            </div>
-          </SectionCard>
-        </div>
-
-        <div className="space-y-6">
-          <SectionCard>
-            <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]">
-              {t(language, 'quickStats')}
-            </p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <StatCard label={t(language, 'attempts')} value={String(attempts.length)} />
-              <StatCard label={t(language, 'average')} value={`${averageScore}`} />
-              <StatCard label={t(language, 'best')} value={`${bestScore}`} />
-              <StatCard
-                label={t(language, 'weakestLayer')}
-                value={weakestLayer}
-                hint={t(language, 'historyBased')}
-              />
-              <StatCard label={t(language, 'mostPlayedDomain')} value={mostPlayedDomain} />
-            </div>
-          </SectionCard>
-
-          <SectionCard>
-            <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-muted)]">
-              {t(language, 'nextMove')}
-            </p>
-            <h2 className="mt-2 text-xl font-medium">{t(language, 'practiceWeakest')}</h2>
-            <p className="mt-2 text-sm text-[var(--text-secondary)]">
-              {t(language, 'practiceWeakestDescription', weakestLayer)}
-            </p>
-            <Link
-              to={ROUTES.generator}
-              className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border border-[var(--border)] px-4 py-2 text-center text-sm text-[var(--text-secondary)] transition hover:border-[var(--border-strong)] hover:text-[var(--text)]"
-            >
-              {t(language, 'startNewScenario')}
-            </Link>
-          </SectionCard>
-        </div>
       </div>
     </>
   )
