@@ -1,0 +1,148 @@
+import type { DomainKey } from '../types'
+
+export interface ScenarioTemplate {
+  domain: DomainKey
+  family: string
+  title: string
+  role: string
+  context: string
+  objective: string
+  stakeholders: string[]
+  defaultPriorities: string[]
+  constraintPool: string[]
+  riskPool: string[]
+  sampleSituations: string[]
+}
+
+export const mockScenarioTemplates: ScenarioTemplate[] = [
+  {
+    domain: 'Education',
+    family: 'LEARNINGPATH',
+    title: 'Adaptive Learning Support Agent',
+    role: 'You are designing an AI agent that helps students progress through learning modules.',
+    context: 'A college wants more students to complete foundational subjects without overwhelming lecturers.',
+    objective: 'Improve learning outcomes while keeping recommendations practical for lecturers and students.',
+    stakeholders: ['Students', 'Lecturers', 'Academic advisors'],
+    defaultPriorities: ['Learning outcomes', 'Fairness', 'Clarity', 'Speed'],
+    constraintPool: ['Lecturer review capacity is limited', 'Student performance data is incomplete', 'Recommendations must remain understandable'],
+    riskPool: ['Poor recommendations', 'Student disengagement', 'Unfair prioritization', 'Missed support needs'],
+    sampleSituations: ['A student is failing quizzes but logs in daily and requests faster progression.', 'Two students need support, but advisor time is only available for one this week.'],
+  },
+  {
+    domain: 'Career Development',
+    family: 'CAREERCOACH',
+    title: 'Career Guidance Planning Agent',
+    role: 'You are designing an AI agent that recommends career development actions for students.',
+    context: 'A polytechnic wants to guide students toward realistic career paths using limited counseling time.',
+    objective: 'Improve career decision quality without giving misleading or overly generic advice.',
+    stakeholders: ['Students', 'Career counselors', 'Industry partners'],
+    defaultPriorities: ['Decision quality', 'Accuracy', 'Student fit', 'Speed'],
+    constraintPool: ['Counselor sessions are limited', 'Student preferences change often', 'Job market data is partially outdated'],
+    riskPool: ['Poor recommendations', 'Missed opportunities', 'User dissatisfaction', 'Reputation damage'],
+    sampleSituations: ['A student wants a high-paying job quickly but lacks the required portfolio.', 'Two career paths seem viable, but labor demand is shifting rapidly.'],
+  },
+  {
+    domain: 'Internship Placement',
+    family: 'MATCHING',
+    title: 'Internship Matching Agent',
+    role: 'You are designing an AI agent that helps place students into suitable internships.',
+    context: 'The internship office must match hundreds of students to limited placement slots across partner companies.',
+    objective: 'Maximize fit and fairness while avoiding delayed or failed internship placements.',
+    stakeholders: ['Students', 'Placement officers', 'Employers'],
+    defaultPriorities: ['Fit', 'Fairness', 'Timeliness', 'Compliance'],
+    constraintPool: ['Some employers accept only a small number of students', 'Student skill profiles are unevenly detailed', 'Placement deadlines are fixed'],
+    riskPool: ['Wrong placement', 'Missed deadlines', 'Employer dissatisfaction', 'Student dissatisfaction'],
+    sampleSituations: ['A strong student wants a premium role, but a weaker student has no remaining options.', 'An employer rejects a matched student two days before the placement deadline.'],
+  },
+  {
+    domain: 'Student Success',
+    family: 'RETENTION',
+    title: 'Student Retention Support Agent',
+    role: 'You are designing an AI agent that identifies and supports at-risk students.',
+    context: 'The institution wants earlier intervention for students likely to disengage or drop out.',
+    objective: 'Reduce dropout risk while making interventions timely and appropriate.',
+    stakeholders: ['Students', 'Advisors', 'Faculty'],
+    defaultPriorities: ['Student wellbeing', 'Early intervention', 'Fairness', 'Accuracy'],
+    constraintPool: ['Attendance data can lag by a week', 'Support staff capacity is limited', 'Sensitive cases require human review'],
+    riskPool: ['Missed opportunities', 'False alarms', 'Privacy issues', 'Student disengagement'],
+    sampleSituations: ['A student has strong grades but has suddenly stopped attending class.', 'A flagged student asks not to be contacted, but the risk profile remains high.'],
+  },
+  {
+    domain: 'Healthcare',
+    family: 'TRIAGE',
+    title: 'Hospital Triage Support Agent',
+    role: 'You are designing an AI triage support agent for a busy urban hospital.',
+    context: 'The hospital sees heavy patient volume and needs safer triage assistance without replacing nurse judgment.',
+    objective: 'Maximize patient safety while minimizing wait times.',
+    stakeholders: ['Patients', 'Triage nurses', 'Hospital management'],
+    defaultPriorities: ['Safety', 'Accuracy', 'Speed', 'Fairness'],
+    constraintPool: ['Only four triage nurses are on shift', 'Thirty percent of patient histories are incomplete', 'The triage bay has limited capacity'],
+    riskPool: ['Wrong priority assignment', 'Safety problems', 'User dissatisfaction', 'Compliance issues'],
+    sampleSituations: ['A 65-year-old with chest pain arrives at the same time as a child with a high fever and only one slot is available.', 'A patient looks stable, but their wearable device suggests a hidden emergency.'],
+  },
+  {
+    domain: 'Emergency Response',
+    family: 'DISPATCH',
+    title: 'Emergency Dispatch Coordination Agent',
+    role: 'You are designing an AI agent that helps emergency teams prioritize incidents.',
+    context: 'The city operations center must dispatch limited crews across multiple urgent incidents.',
+    objective: 'Improve response safety and speed while avoiding critical misallocation of resources.',
+    stakeholders: ['Citizens', 'Dispatch officers', 'Response teams'],
+    defaultPriorities: ['Safety', 'Speed', 'Coverage', 'Accuracy'],
+    constraintPool: ['Only two field teams are available', 'Incoming reports may be unreliable', 'Traffic conditions change rapidly'],
+    riskPool: ['Time overruns', 'Safety problems', 'System failure', 'Missed opportunities'],
+    sampleSituations: ['A major traffic collision and a fire alarm are reported within the same minute.', 'A lower-priority incident suddenly escalates while teams are already en route elsewhere.'],
+  },
+  {
+    domain: 'Customer Service',
+    family: 'ESCALATION',
+    title: 'Customer Service Resolution Agent',
+    role: 'You are designing an AI agent that assists in resolving customer requests and escalations.',
+    context: 'A support center needs consistent decisions under high ticket volume and mixed issue severity.',
+    objective: 'Increase resolution quality while keeping response times reasonable.',
+    stakeholders: ['Customers', 'Support agents', 'Operations managers'],
+    defaultPriorities: ['Resolution quality', 'Speed', 'Fairness', 'Compliance'],
+    constraintPool: ['Senior agents are limited', 'Customer histories may be fragmented', 'Refund authority is capped'],
+    riskPool: ['User dissatisfaction', 'Wrong decisions', 'Reputation damage', 'Compliance issues'],
+    sampleSituations: ['A loyal customer requests a refund that violates the normal policy.', 'Three escalated complaints arrive at once, but only one senior agent is available.'],
+  },
+  {
+    domain: 'Finance',
+    family: 'RISKROUTER',
+    title: 'Financial Risk Review Agent',
+    role: 'You are designing an AI agent that supports financial review decisions.',
+    context: 'A finance team wants faster reviews without increasing compliance or risk exposure.',
+    objective: 'Improve decision quality while reducing avoidable financial and compliance risk.',
+    stakeholders: ['Applicants', 'Risk analysts', 'Compliance officers'],
+    defaultPriorities: ['Risk reduction', 'Compliance', 'Accuracy', 'Speed'],
+    constraintPool: ['Application data may be incomplete', 'Manual review capacity is limited', 'Regulatory standards must be followed'],
+    riskPool: ['Compliance issues', 'Wrong decisions', 'Resource waste', 'Reputation damage'],
+    sampleSituations: ['An application appears profitable, but identity documents are inconsistent.', 'A borderline case could be approved quickly or escalated for costly manual review.'],
+  },
+  {
+    domain: 'Smart City',
+    family: 'MOBILITY',
+    title: 'Urban Mobility Optimization Agent',
+    role: 'You are designing an AI agent that supports city mobility decisions.',
+    context: 'A smart city team wants to optimize traffic and public transit signals across changing conditions.',
+    objective: 'Improve city mobility while maintaining fairness and public safety.',
+    stakeholders: ['Commuters', 'Transit operators', 'City planners'],
+    defaultPriorities: ['Safety', 'Flow efficiency', 'Fairness', 'Reliability'],
+    constraintPool: ['Sensor coverage is uneven', 'Roadworks reduce network capacity', 'Transit delays ripple across districts'],
+    riskPool: ['System failure', 'Resource waste', 'Safety problems', 'User dissatisfaction'],
+    sampleSituations: ['A downtown event causes congestion while an ambulance route needs priority clearance.', 'A transit corridor is delayed, but rerouting traffic would affect school zones.'],
+  },
+  {
+    domain: 'Project Management',
+    family: 'RESOURCEPLAN',
+    title: 'Project Resource Allocation Agent',
+    role: 'You are designing an AI agent that recommends project resource allocation decisions.',
+    context: 'A delivery team must decide how to allocate limited staff across multiple deadlines and risks.',
+    objective: 'Optimize project outcomes while managing deadlines, quality, and team capacity.',
+    stakeholders: ['Project managers', 'Team leads', 'Clients'],
+    defaultPriorities: ['Deadline reliability', 'Quality', 'Resource efficiency', 'Stakeholder trust'],
+    constraintPool: ['Senior specialists are shared across projects', 'Scope changes arrive mid-sprint', 'Client deadlines cannot move easily'],
+    riskPool: ['Time overruns', 'Resource waste', 'Missed opportunities', 'User dissatisfaction'],
+    sampleSituations: ['Two high-priority deliverables collide, but the same senior engineer is needed for both.', 'A client requests a late scope increase while the team is already at capacity.'],
+  },
+]
