@@ -29,17 +29,17 @@ export const beginnerExamples: Record<
   ms: {
     goal:
       'Utamakan pesakit secara selamat dalam 10 minit sambil memastikan kes mendesak diutamakan berbanding kes rutin.',
-    priority: ['Safety', 'Accuracy', 'Speed', 'Fairness'],
+    priority: ['Keselamatan', 'Ketepatan', 'Kelajuan', 'Keadilan'],
     rules: [
-      'MUST eskalasi mana-mana kes sakit dada untuk semakan segera.',
-      'NEVER menurunkan keutamaan pesakit hanya kerana barisan panjang.',
-      'ALWAYS rekod sebab bagi keputusan berisiko tinggi.',
+      'MESTI eskalasi kes sakit dada untuk semakan segera.',
+      'JANGAN turunkan keutamaan pesakit hanya kerana barisan panjang.',
+      'SENTIASA tulis sebab untuk keputusan berisiko tinggi.',
     ],
     logic: [
-      'IF pesakit mengalami sakit dada yang teruk THEN utamakan triage segera BECAUSE kelewatan rawatan boleh meningkatkan risiko.',
-      'IF tanda vital tidak lengkap THEN minta semakan manusia BECAUSE data yang hilang mengurangkan keyakinan.',
+      'Jika pesakit sakit dada teruk, maka utamakan triage segera. Sebab risiko boleh meningkat jika lambat.',
+      'Jika maklumat penting tak lengkap, maka minta semakan manusia. Sebab keputusan jadi kurang yakin.',
     ],
     decision:
-      'Eskalasi pesakit untuk semakan segera kerana safety lebih utama daripada speed dan hard-risk rules telah dicetuskan.',
+      'Eskalasi pesakit untuk semakan segera. Keselamatan lebih utama daripada kelajuan.',
   },
 }

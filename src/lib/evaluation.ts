@@ -241,7 +241,7 @@ export const evaluateSubmission = (
       v(
         language,
         'Coverage is strong, but retry the scenario to tighten edge-case reasoning.',
-        'Liputan adalah baik, tetapi cuba semula senario untuk mengukuhkan penaakulan kes pinggir.',
+        'Liputan anda dah baik, tapi cuba semula untuk kemaskan situasi luar jangka.',
       ),
     )
   }
@@ -260,31 +260,31 @@ export const evaluateSubmission = (
       v(
         language,
         'Rewrite the goal so it names a measurable outcome, a target stakeholder, and a clear boundary for success.',
-        'Tulis semula goal supaya ia menyatakan hasil yang boleh diukur, pihak sasaran, dan sempadan kejayaan yang jelas.',
+        'Tulis semula matlamat supaya jelas, boleh diukur, dan ada had kejayaan yang nyata.',
       ),
     priority:
       v(
         language,
         'Clarify which value wins under pressure and explain how the top priorities resolve conflict in this scenario.',
-        'Jelaskan nilai mana yang menang di bawah tekanan dan terangkan bagaimana priority teratas menyelesaikan konflik dalam senario ini.',
+        'Jelaskan apa yang paling utama bila tertekan, dan bagaimana keutamaan menyelesaikan percanggahan.',
       ),
     rules:
       v(
         language,
         'Convert broad intentions into hard rules that are testable, specific, and free from vague wording.',
-        'Tukarkan niat umum kepada hard rules yang boleh diuji, khusus, dan bebas daripada bahasa kabur.',
+        'Tukarkan niat umum kepada peraturan yang jelas, khusus, dan mudah disemak.',
       ),
     logic:
       v(
         language,
         'Expand the if-then layer so each major risk has a visible branch, and make the fallback path explicit when uncertainty rises.',
-        'Luaskan lapisan if-then supaya setiap risiko utama mempunyai cabang yang jelas, dan nyatakan laluan fallback apabila ketidakpastian meningkat.',
+        'Tambah langkah “jika… maka…” untuk risiko utama, dan nyatakan apa dibuat bila maklumat tak cukup.',
       ),
     decision:
       v(
         language,
         'Tie the final decision back to the goal, top priority, and at least one hard rule so the outcome feels fully traceable.',
-        'Hubungkan decision akhir semula kepada goal, priority teratas, dan sekurang-kurangnya satu hard rule supaya hasilnya boleh dijejak sepenuhnya.',
+        'Pastikan jawapan akhir jelas ikut matlamat, keutamaan utama, dan sekurang-kurangnya satu peraturan penting.',
       ),
   }
 

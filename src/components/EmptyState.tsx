@@ -12,7 +12,7 @@ function EmptyState({
   onAction?: () => void
 }) {
   return (
-    <div className="rounded-[var(--radius-card)] border border-dashed border-[var(--border-strong)] bg-[color:rgba(28,28,38,0.45)] px-4 py-8 text-center sm:px-6 sm:py-10">
+    <div className="rounded-[var(--radius-card)] border border-dashed border-[var(--border-strong)] bg-[var(--surface-raised)] px-4 py-8 text-center sm:px-6 sm:py-10">
       <h3 className="text-lg font-medium sm:text-xl">{title}</h3>
       <p className="mx-auto mt-2 max-w-xl text-sm text-[var(--text-secondary)]">
         {description}

@@ -30,12 +30,7 @@ This project is designed to make early agent-design practice:
 
 ## Screenshots
 
-Add repository screenshots here before public promotion.
-
-- `docs/screenshots/dashboard.png` - Dashboard and onboarding
-- `docs/screenshots/workspace-mobile.png` - Mobile GPRID workspace
-- `docs/screenshots/evaluation.png` - Local evaluation and DeepSeek judge
-- `docs/screenshots/history.png` - Replayable attempt history
+Screenshots will be added before public promotion.
 
 ## Tech Stack
 

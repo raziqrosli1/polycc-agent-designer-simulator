@@ -225,31 +225,31 @@ export const runDeepSeekJudge = async (
     strengths: ensureItems(
       parsed.strengths,
       language === 'ms'
-        ? 'DeepSeek tidak memulangkan kekuatan yang jelas.'
+        ? 'DeepSeek tak bagi senarai perkara yang anda buat dengan baik.'
         : 'DeepSeek did not return clear strengths.',
     ),
     weaknesses: ensureItems(
       parsed.weaknesses,
       language === 'ms'
-        ? 'DeepSeek tidak memulangkan kelemahan yang jelas.'
+        ? 'DeepSeek tak bagi senarai perkara yang perlu dibaiki.'
         : 'DeepSeek did not return clear weaknesses.',
     ),
     blindSpots: ensureItems(
       parsed.blindSpots,
       language === 'ms'
-        ? 'DeepSeek tidak memulangkan blind spot yang jelas.'
+        ? 'DeepSeek tak bagi perkara yang anda terlepas pandang.'
         : 'DeepSeek did not return clear blind spots.',
     ),
     improvements: ensureItems(
       parsed.improvements,
       language === 'ms'
-        ? 'DeepSeek tidak memulangkan cadangan penambahbaikan.'
+        ? 'DeepSeek tak bagi cadangan yang jelas untuk langkah seterusnya.'
         : 'DeepSeek did not return improvement suggestions.',
     ),
     topTeamImprovements: ensureItems(
       parsed.howATopTeamWouldImproveThis,
       language === 'ms'
-        ? 'DeepSeek tidak memulangkan cadangan pasukan terbaik.'
+        ? 'DeepSeek tak bagi contoh bagaimana pasukan terbaik akan kemaskan jawapan.'
         : 'DeepSeek did not return top-team recommendations.',
     ),
     debug: {
